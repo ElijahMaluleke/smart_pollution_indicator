@@ -1,0 +1,1919 @@
+# 0 "C:/Users/elija/zephyrproject/zephyr/misc/empty_file.c"
+# 0 "<built-in>"
+# 0 "<command-line>"
+# 1 "C:/Users/elija/zephyrproject/zephyr/boards/arm/cy8cproto_062_4343w/cy8cproto_062_4343w.dts" 1
+
+
+
+
+
+/dts-v1/;
+# 1 "C:/Users/elija/zephyrproject/zephyr/dts/arm/infineon/psoc6/mpns/CY8C624ABZI_S2D44.dtsi" 1 3 4
+
+
+
+
+
+
+
+# 1 "C:/Users/elija/zephyrproject/zephyr/dts/arm/armv7-m.dtsi" 1 3 4
+
+
+# 1 "C:/Users/elija/zephyrproject/zephyr/dts/common/skeleton.dtsi" 1 3 4
+# 9 "C:/Users/elija/zephyrproject/zephyr/dts/common/skeleton.dtsi" 3 4
+/ {
+ #address-cells = <1>;
+ #size-cells = <1>;
+ chosen { };
+ aliases { };
+};
+# 4 "C:/Users/elija/zephyrproject/zephyr/dts/arm/armv7-m.dtsi" 2 3 4
+
+/ {
+ soc {
+  #address-cells = <1>;
+  #size-cells = <1>;
+  compatible = "simple-bus";
+  interrupt-parent = <&nvic>;
+  ranges;
+
+  nvic: interrupt-controller@e000e100 {
+   #address-cells = <1>;
+   compatible = "arm,v7m-nvic";
+   reg = <0xe000e100 0xc00>;
+   interrupt-controller;
+   #interrupt-cells = <2>;
+  };
+
+  systick: timer@e000e010 {
+   compatible = "arm,armv7m-systick";
+   reg = <0xe000e010 0x10>;
+  };
+ };
+};
+# 9 "C:/Users/elija/zephyrproject/zephyr/dts/arm/infineon/psoc6/mpns/CY8C624ABZI_S2D44.dtsi" 2 3 4
+# 1 "c:\\users\\elija\\zephyrproject\\zephyr\\dts\\arm\\infineon\\psoc6\\psoc6_02\\psoc6_02.124-bga.dtsi" 1 3 4
+
+
+
+
+
+
+
+# 1 "C:/Users/elija/zephyrproject/zephyr/include/zephyr/dt-bindings/gpio/gpio.h" 1 3 4
+# 9 "c:\\users\\elija\\zephyrproject\\zephyr\\dts\\arm\\infineon\\psoc6\\psoc6_02\\psoc6_02.124-bga.dtsi" 2 3 4
+# 1 "C:/Users/elija/zephyrproject/zephyr/include/zephyr/dt-bindings/pinctrl/ifx_cat1-pinctrl.h" 1 3 4
+# 10 "c:\\users\\elija\\zephyrproject\\zephyr\\dts\\arm\\infineon\\psoc6\\psoc6_02\\psoc6_02.124-bga.dtsi" 2 3 4
+# 1 "c:\\users\\elija\\zephyrproject\\zephyr\\dts\\arm\\infineon\\psoc6\\psoc6_02\\psoc6_02.dtsi" 1 3 4
+
+
+
+
+
+
+
+# 1 "C:/Users/elija/zephyrproject/zephyr/dts/common/mem.h" 1 3 4
+# 9 "c:\\users\\elija\\zephyrproject\\zephyr\\dts\\arm\\infineon\\psoc6\\psoc6_02\\psoc6_02.dtsi" 2 3 4
+
+/ {
+ cpus {
+  #address-cells = <1>;
+  #size-cells = <0>;
+
+  cpu@0 {
+   device_type = "cpu";
+   compatible = "arm,cortex-m0+";
+   reg = <0>;
+  };
+  cpu@1 {
+   device_type = "cpu";
+   compatible = "arm,cortex-m4f";
+   reg = <1>;
+  };
+ };
+
+ flash-controller@40240000 {
+  compatible = "infineon,cat1-flash-controller";
+  reg = < 0x40240000 0x10000 >;
+  #address-cells = <1>;
+  #size-cells = <1>;
+
+  flash0: flash@10000000 {
+   compatible = "soc-nv-flash";
+   reg = <0x10000000 0x200000>;
+   write-block-size = <512>;
+   erase-block-size = <512>;
+  };
+  flash1: flash@14000000 {
+   compatible = "soc-nv-flash";
+   reg = <0x14000000 0x8000>;
+   write-block-size = <512>;
+   erase-block-size = <512>;
+  };
+ };
+
+ sram0: memory@8000000 {
+  compatible = "mmio-sram";
+  reg = <0x8000000 0x100000>;
+ };
+
+ soc {
+  pinctrl: pinctrl@40300000 {
+   compatible = "infineon,cat1-pinctrl";
+   reg = <0x40300000 0x20000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+
+   hsiom: hsiom@40300000 {
+    compatible = "infineon,cat1-hsiom";
+    reg = <0x40300000 0x4000>;
+    interrupts = <15 6>, <16 6>;
+    status = "disabled";
+   };
+
+   gpio_prt0: gpio@40310000 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310000 0x80>;
+    interrupts = <0 6>;
+    gpio-controller;
+    ngpios = <6>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt1: gpio@40310080 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310080 0x80>;
+    interrupts = <1 6>;
+    gpio-controller;
+    ngpios = <6>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt2: gpio@40310100 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310100 0x80>;
+    interrupts = <2 6>;
+    gpio-controller;
+    ngpios = <8>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt3: gpio@40310180 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310180 0x80>;
+    interrupts = <3 6>;
+    gpio-controller;
+    ngpios = <6>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt4: gpio@40310200 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310200 0x80>;
+    interrupts = <4 6>;
+    gpio-controller;
+    ngpios = <2>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt5: gpio@40310280 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310280 0x80>;
+    interrupts = <5 6>;
+    gpio-controller;
+    ngpios = <8>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt6: gpio@40310300 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310300 0x80>;
+    interrupts = <6 6>;
+    gpio-controller;
+    ngpios = <8>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt7: gpio@40310380 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310380 0x80>;
+    interrupts = <7 6>;
+    gpio-controller;
+    ngpios = <8>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt8: gpio@40310400 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310400 0x80>;
+    interrupts = <8 6>;
+    gpio-controller;
+    ngpios = <8>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt9: gpio@40310480 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310480 0x80>;
+    interrupts = <9 6>;
+    gpio-controller;
+    ngpios = <8>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt10: gpio@40310500 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310500 0x80>;
+    interrupts = <10 6>;
+    gpio-controller;
+    ngpios = <8>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt11: gpio@40310580 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310580 0x80>;
+    interrupts = <11 6>;
+    gpio-controller;
+    ngpios = <8>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt12: gpio@40310600 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310600 0x80>;
+    interrupts = <12 6>;
+    gpio-controller;
+    ngpios = <8>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt13: gpio@40310680 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310680 0x80>;
+    interrupts = <13 6>;
+    gpio-controller;
+    ngpios = <8>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+   gpio_prt14: gpio@40310700 {
+    compatible = "infineon,cat1-gpio";
+    reg = <0x40310700 0x80>;
+    interrupts = <14 6>;
+    gpio-controller;
+    ngpios = <2>;
+    status = "disabled";
+    #gpio-cells = <2>;
+   };
+  };
+  scb0: scb@40600000 {
+   compatible = "infineon,cat1-scb";
+   reg = <0x40600000 0x10000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   interrupts = <39 6>;
+   status = "disabled";
+  };
+  scb1: scb@40610000 {
+   compatible = "infineon,cat1-scb";
+   reg = <0x40610000 0x10000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   interrupts = <40 6>;
+   status = "disabled";
+  };
+  scb2: scb@40620000 {
+   compatible = "infineon,cat1-scb";
+   reg = <0x40620000 0x10000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   interrupts = <41 6>;
+   status = "disabled";
+  };
+  scb3: scb@40630000 {
+   compatible = "infineon,cat1-scb";
+   reg = <0x40630000 0x10000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   interrupts = <42 6>;
+   status = "disabled";
+  };
+  scb4: scb@40640000 {
+   compatible = "infineon,cat1-scb";
+   reg = <0x40640000 0x10000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   interrupts = <43 6>;
+   status = "disabled";
+  };
+  scb5: scb@40650000 {
+   compatible = "infineon,cat1-scb";
+   reg = <0x40650000 0x10000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   interrupts = <44 6>;
+   status = "disabled";
+  };
+  scb6: scb@40660000 {
+   compatible = "infineon,cat1-scb";
+   reg = <0x40660000 0x10000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   interrupts = <45 6>;
+   status = "disabled";
+  };
+  scb7: scb@40670000 {
+   compatible = "infineon,cat1-scb";
+   reg = <0x40670000 0x10000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   interrupts = <46 6>;
+   status = "disabled";
+  };
+  scb8: scb@40680000 {
+   compatible = "infineon,cat1-scb";
+   reg = <0x40680000 0x10000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   interrupts = <18 6>;
+   status = "disabled";
+  };
+  scb9: scb@40690000 {
+   compatible = "infineon,cat1-scb";
+   reg = <0x40690000 0x10000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   interrupts = <47 6>;
+   status = "disabled";
+  };
+  scb10: scb@406a0000 {
+   compatible = "infineon,cat1-scb";
+   reg = <0x406a0000 0x10000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   interrupts = <48 6>;
+   status = "disabled";
+  };
+  scb11: scb@406b0000 {
+   compatible = "infineon,cat1-scb";
+   reg = <0x406b0000 0x10000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   interrupts = <49 6>;
+   status = "disabled";
+  };
+  scb12: scb@406c0000 {
+   compatible = "infineon,cat1-scb";
+   reg = <0x406c0000 0x10000>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   interrupts = <50 6>;
+   status = "disabled";
+  };
+  adc0: adc@409d0000 {
+   compatible = "infineon,cat1-adc";
+   reg = <0x409d0000 0x10000>;
+   interrupts = <155 6>;
+   status = "disabled";
+   #io-channel-cells = <1>;
+  };
+
+  watchdog0: watchdog@40260180 {
+   compatible = "infineon,cat1-watchdog";
+   reg = <0x40260180 0xc>;
+   interrupts = <22 6>;
+   status = "disabled";
+  };
+  counter0_0: counter@40380100 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40380100 0x40>;
+   interrupts = <123 6>;
+   resolution = <32>;
+   status = "disabled";
+  };
+  counter0_1: counter@40380140 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40380140 0x40>;
+   interrupts = <124 6>;
+   resolution = <32>;
+   status = "disabled";
+  };
+  counter0_2: counter@40380180 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40380180 0x40>;
+   interrupts = <125 6>;
+   resolution = <32>;
+   status = "disabled";
+  };
+  counter0_3: counter@403801c0 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x403801c0 0x40>;
+   interrupts = <126 6>;
+   resolution = <32>;
+   status = "disabled";
+  };
+  counter0_4: counter@40380200 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40380200 0x40>;
+   interrupts = <127 6>;
+   resolution = <32>;
+   status = "disabled";
+  };
+  counter0_5: counter@40380240 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40380240 0x40>;
+   interrupts = <128 6>;
+   resolution = <32>;
+   status = "disabled";
+  };
+  counter0_6: counter@40380280 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40380280 0x40>;
+   interrupts = <129 6>;
+   resolution = <32>;
+   status = "disabled";
+  };
+  counter0_7: counter@403802c0 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x403802c0 0x40>;
+   interrupts = <130 6>;
+   resolution = <32>;
+   status = "disabled";
+  };
+  counter1_0: counter@40390100 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390100 0x40>;
+   interrupts = <131 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_1: counter@40390140 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390140 0x40>;
+   interrupts = <132 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_2: counter@40390180 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390180 0x40>;
+   interrupts = <133 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_3: counter@403901c0 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x403901c0 0x40>;
+   interrupts = <134 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_4: counter@40390200 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390200 0x40>;
+   interrupts = <135 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_5: counter@40390240 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390240 0x40>;
+   interrupts = <136 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_6: counter@40390280 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390280 0x40>;
+   interrupts = <137 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_7: counter@403902c0 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x403902c0 0x40>;
+   interrupts = <138 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_8: counter@40390300 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390300 0x40>;
+   interrupts = <139 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_9: counter@40390340 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390340 0x40>;
+   interrupts = <140 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_10: counter@40390380 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390380 0x40>;
+   interrupts = <141 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_11: counter@403903c0 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x403903c0 0x40>;
+   interrupts = <142 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_12: counter@40390400 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390400 0x40>;
+   interrupts = <143 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_13: counter@40390440 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390440 0x40>;
+   interrupts = <144 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_14: counter@40390480 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390480 0x40>;
+   interrupts = <145 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_15: counter@403904c0 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x403904c0 0x40>;
+   interrupts = <146 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_16: counter@40390500 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390500 0x40>;
+   interrupts = <147 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_17: counter@40390540 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390540 0x40>;
+   interrupts = <148 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_18: counter@40390580 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390580 0x40>;
+   interrupts = <149 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_19: counter@403905c0 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x403905c0 0x40>;
+   interrupts = <150 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_20: counter@40390600 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390600 0x40>;
+   interrupts = <151 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_21: counter@40390640 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390640 0x40>;
+   interrupts = <152 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_22: counter@40390680 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x40390680 0x40>;
+   interrupts = <153 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+  counter1_23: counter@403906c0 {
+   compatible = "infineon,cat1-counter";
+   reg = <0x403906c0 0x40>;
+   interrupts = <154 6>;
+   resolution = <16>;
+   status = "disabled";
+  };
+ };
+};
+# 11 "c:\\users\\elija\\zephyrproject\\zephyr\\dts\\arm\\infineon\\psoc6\\psoc6_02\\psoc6_02.124-bga.dtsi" 2 3 4
+
+/ {
+ soc {
+  pinctrl: pinctrl@40300000 {
+
+   /omit-if-no-ref/ p0_2_scb0_i2c_scl: p0_2_scb0_i2c_scl {
+    pinmux = <((0 << (0)) | (2 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_0_scb7_i2c_scl: p1_0_scb7_i2c_scl {
+    pinmux = <((1 << (0)) | (0 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_0_scb1_i2c_scl: p2_0_scb1_i2c_scl {
+    pinmux = <((2 << (0)) | (0 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_4_scb9_i2c_scl: p2_4_scb9_i2c_scl {
+    pinmux = <((2 << (0)) | (4 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_0_scb2_i2c_scl: p3_0_scb2_i2c_scl {
+    pinmux = <((3 << (0)) | (0 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p4_0_scb7_i2c_scl: p4_0_scb7_i2c_scl {
+    pinmux = <((4 << (0)) | (0 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_0_scb5_i2c_scl: p5_0_scb5_i2c_scl {
+    pinmux = <((5 << (0)) | (0 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_4_scb10_i2c_scl: p5_4_scb10_i2c_scl {
+    pinmux = <((5 << (0)) | (4 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_0_scb3_i2c_scl: p6_0_scb3_i2c_scl {
+    pinmux = <((6 << (0)) | (0 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_0_scb8_i2c_scl: p6_0_scb8_i2c_scl {
+    pinmux = <((6 << (0)) | (0 << (8)) | ((14) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_4_scb6_i2c_scl: p6_4_scb6_i2c_scl {
+    pinmux = <((6 << (0)) | (4 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_4_scb8_i2c_scl: p6_4_scb8_i2c_scl {
+    pinmux = <((6 << (0)) | (4 << (8)) | ((14) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_0_scb4_i2c_scl: p7_0_scb4_i2c_scl {
+    pinmux = <((7 << (0)) | (0 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_0_scb4_i2c_scl: p8_0_scb4_i2c_scl {
+    pinmux = <((8 << (0)) | (0 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_4_scb11_i2c_scl: p8_4_scb11_i2c_scl {
+    pinmux = <((8 << (0)) | (4 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_0_scb2_i2c_scl: p9_0_scb2_i2c_scl {
+    pinmux = <((9 << (0)) | (0 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_0_scb1_i2c_scl: p10_0_scb1_i2c_scl {
+    pinmux = <((10 << (0)) | (0 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_0_scb5_i2c_scl: p11_0_scb5_i2c_scl {
+    pinmux = <((11 << (0)) | (0 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_0_scb6_i2c_scl: p12_0_scb6_i2c_scl {
+    pinmux = <((12 << (0)) | (0 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_0_scb6_i2c_scl: p13_0_scb6_i2c_scl {
+    pinmux = <((13 << (0)) | (0 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_4_scb12_i2c_scl: p13_4_scb12_i2c_scl {
+    pinmux = <((13 << (0)) | (4 << (8)) | ((19) << (16)))>;
+   };
+
+
+   /omit-if-no-ref/ p0_3_scb0_i2c_sda: p0_3_scb0_i2c_sda {
+    pinmux = <((0 << (0)) | (3 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_1_scb7_i2c_sda: p1_1_scb7_i2c_sda {
+    pinmux = <((1 << (0)) | (1 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_1_scb1_i2c_sda: p2_1_scb1_i2c_sda {
+    pinmux = <((2 << (0)) | (1 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_5_scb9_i2c_sda: p2_5_scb9_i2c_sda {
+    pinmux = <((2 << (0)) | (5 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_1_scb2_i2c_sda: p3_1_scb2_i2c_sda {
+    pinmux = <((3 << (0)) | (1 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p4_1_scb7_i2c_sda: p4_1_scb7_i2c_sda {
+    pinmux = <((4 << (0)) | (1 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_1_scb5_i2c_sda: p5_1_scb5_i2c_sda {
+    pinmux = <((5 << (0)) | (1 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_5_scb10_i2c_sda: p5_5_scb10_i2c_sda {
+    pinmux = <((5 << (0)) | (5 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_1_scb3_i2c_sda: p6_1_scb3_i2c_sda {
+    pinmux = <((6 << (0)) | (1 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_1_scb8_i2c_sda: p6_1_scb8_i2c_sda {
+    pinmux = <((6 << (0)) | (1 << (8)) | ((14) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_5_scb6_i2c_sda: p6_5_scb6_i2c_sda {
+    pinmux = <((6 << (0)) | (5 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_5_scb8_i2c_sda: p6_5_scb8_i2c_sda {
+    pinmux = <((6 << (0)) | (5 << (8)) | ((14) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_1_scb4_i2c_sda: p7_1_scb4_i2c_sda {
+    pinmux = <((7 << (0)) | (1 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_1_scb4_i2c_sda: p8_1_scb4_i2c_sda {
+    pinmux = <((8 << (0)) | (1 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_5_scb11_i2c_sda: p8_5_scb11_i2c_sda {
+    pinmux = <((8 << (0)) | (5 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_1_scb2_i2c_sda: p9_1_scb2_i2c_sda {
+    pinmux = <((9 << (0)) | (1 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_1_scb1_i2c_sda: p10_1_scb1_i2c_sda {
+    pinmux = <((10 << (0)) | (1 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_1_scb5_i2c_sda: p11_1_scb5_i2c_sda {
+    pinmux = <((11 << (0)) | (1 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_1_scb6_i2c_sda: p12_1_scb6_i2c_sda {
+    pinmux = <((12 << (0)) | (1 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_1_scb6_i2c_sda: p13_1_scb6_i2c_sda {
+    pinmux = <((13 << (0)) | (1 << (8)) | ((19) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_5_scb12_i2c_sda: p13_5_scb12_i2c_sda {
+    pinmux = <((13 << (0)) | (5 << (8)) | ((19) << (16)))>;
+   };
+
+
+   /omit-if-no-ref/ p0_5_scb0_uart_cts: p0_5_scb0_uart_cts {
+    pinmux = <((0 << (0)) | (5 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_3_scb7_uart_cts: p1_3_scb7_uart_cts {
+    pinmux = <((1 << (0)) | (3 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_3_scb1_uart_cts: p2_3_scb1_uart_cts {
+    pinmux = <((2 << (0)) | (3 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_7_scb9_uart_cts: p2_7_scb9_uart_cts {
+    pinmux = <((2 << (0)) | (7 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_3_scb2_uart_cts: p3_3_scb2_uart_cts {
+    pinmux = <((3 << (0)) | (3 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_3_scb5_uart_cts: p5_3_scb5_uart_cts {
+    pinmux = <((5 << (0)) | (3 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_7_scb10_uart_cts: p5_7_scb10_uart_cts {
+    pinmux = <((5 << (0)) | (7 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_3_scb3_uart_cts: p6_3_scb3_uart_cts {
+    pinmux = <((6 << (0)) | (3 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_7_scb6_uart_cts: p6_7_scb6_uart_cts {
+    pinmux = <((6 << (0)) | (7 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_3_scb4_uart_cts: p7_3_scb4_uart_cts {
+    pinmux = <((7 << (0)) | (3 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_3_scb4_uart_cts: p8_3_scb4_uart_cts {
+    pinmux = <((8 << (0)) | (3 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_7_scb11_uart_cts: p8_7_scb11_uart_cts {
+    pinmux = <((8 << (0)) | (7 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_3_scb2_uart_cts: p9_3_scb2_uart_cts {
+    pinmux = <((9 << (0)) | (3 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_3_scb1_uart_cts: p10_3_scb1_uart_cts {
+    pinmux = <((10 << (0)) | (3 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_3_scb5_uart_cts: p11_3_scb5_uart_cts {
+    pinmux = <((11 << (0)) | (3 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_3_scb6_uart_cts: p12_3_scb6_uart_cts {
+    pinmux = <((12 << (0)) | (3 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_3_scb6_uart_cts: p13_3_scb6_uart_cts {
+    pinmux = <((13 << (0)) | (3 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_7_scb12_uart_cts: p13_7_scb12_uart_cts {
+    pinmux = <((13 << (0)) | (7 << (8)) | ((18) << (16)))>;
+   };
+
+
+   /omit-if-no-ref/ p0_4_scb0_uart_rts: p0_4_scb0_uart_rts {
+    pinmux = <((0 << (0)) | (4 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_2_scb7_uart_rts: p1_2_scb7_uart_rts {
+    pinmux = <((1 << (0)) | (2 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_2_scb1_uart_rts: p2_2_scb1_uart_rts {
+    pinmux = <((2 << (0)) | (2 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_6_scb9_uart_rts: p2_6_scb9_uart_rts {
+    pinmux = <((2 << (0)) | (6 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_2_scb2_uart_rts: p3_2_scb2_uart_rts {
+    pinmux = <((3 << (0)) | (2 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_2_scb5_uart_rts: p5_2_scb5_uart_rts {
+    pinmux = <((5 << (0)) | (2 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_6_scb10_uart_rts: p5_6_scb10_uart_rts {
+    pinmux = <((5 << (0)) | (6 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_2_scb3_uart_rts: p6_2_scb3_uart_rts {
+    pinmux = <((6 << (0)) | (2 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_6_scb6_uart_rts: p6_6_scb6_uart_rts {
+    pinmux = <((6 << (0)) | (6 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_2_scb4_uart_rts: p7_2_scb4_uart_rts {
+    pinmux = <((7 << (0)) | (2 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_2_scb4_uart_rts: p8_2_scb4_uart_rts {
+    pinmux = <((8 << (0)) | (2 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_6_scb11_uart_rts: p8_6_scb11_uart_rts {
+    pinmux = <((8 << (0)) | (6 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_2_scb2_uart_rts: p9_2_scb2_uart_rts {
+    pinmux = <((9 << (0)) | (2 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_2_scb1_uart_rts: p10_2_scb1_uart_rts {
+    pinmux = <((10 << (0)) | (2 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_2_scb5_uart_rts: p11_2_scb5_uart_rts {
+    pinmux = <((11 << (0)) | (2 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_2_scb6_uart_rts: p12_2_scb6_uart_rts {
+    pinmux = <((12 << (0)) | (2 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_2_scb6_uart_rts: p13_2_scb6_uart_rts {
+    pinmux = <((13 << (0)) | (2 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_6_scb12_uart_rts: p13_6_scb12_uart_rts {
+    pinmux = <((13 << (0)) | (6 << (8)) | ((18) << (16)))>;
+   };
+
+
+   /omit-if-no-ref/ p0_2_scb0_uart_rx: p0_2_scb0_uart_rx {
+    pinmux = <((0 << (0)) | (2 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_0_scb7_uart_rx: p1_0_scb7_uart_rx {
+    pinmux = <((1 << (0)) | (0 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_0_scb1_uart_rx: p2_0_scb1_uart_rx {
+    pinmux = <((2 << (0)) | (0 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_4_scb9_uart_rx: p2_4_scb9_uart_rx {
+    pinmux = <((2 << (0)) | (4 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_0_scb2_uart_rx: p3_0_scb2_uart_rx {
+    pinmux = <((3 << (0)) | (0 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p4_0_scb7_uart_rx: p4_0_scb7_uart_rx {
+    pinmux = <((4 << (0)) | (0 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_0_scb5_uart_rx: p5_0_scb5_uart_rx {
+    pinmux = <((5 << (0)) | (0 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_4_scb10_uart_rx: p5_4_scb10_uart_rx {
+    pinmux = <((5 << (0)) | (4 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_0_scb3_uart_rx: p6_0_scb3_uart_rx {
+    pinmux = <((6 << (0)) | (0 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_4_scb6_uart_rx: p6_4_scb6_uart_rx {
+    pinmux = <((6 << (0)) | (4 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_0_scb4_uart_rx: p7_0_scb4_uart_rx {
+    pinmux = <((7 << (0)) | (0 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_0_scb4_uart_rx: p8_0_scb4_uart_rx {
+    pinmux = <((8 << (0)) | (0 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_4_scb11_uart_rx: p8_4_scb11_uart_rx {
+    pinmux = <((8 << (0)) | (4 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_0_scb2_uart_rx: p9_0_scb2_uart_rx {
+    pinmux = <((9 << (0)) | (0 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_0_scb1_uart_rx: p10_0_scb1_uart_rx {
+    pinmux = <((10 << (0)) | (0 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_0_scb5_uart_rx: p11_0_scb5_uart_rx {
+    pinmux = <((11 << (0)) | (0 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_0_scb6_uart_rx: p12_0_scb6_uart_rx {
+    pinmux = <((12 << (0)) | (0 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_0_scb6_uart_rx: p13_0_scb6_uart_rx {
+    pinmux = <((13 << (0)) | (0 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_4_scb12_uart_rx: p13_4_scb12_uart_rx {
+    pinmux = <((13 << (0)) | (4 << (8)) | ((18) << (16)))>;
+   };
+
+
+   /omit-if-no-ref/ p0_3_scb0_uart_tx: p0_3_scb0_uart_tx {
+    pinmux = <((0 << (0)) | (3 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_1_scb7_uart_tx: p1_1_scb7_uart_tx {
+    pinmux = <((1 << (0)) | (1 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_1_scb1_uart_tx: p2_1_scb1_uart_tx {
+    pinmux = <((2 << (0)) | (1 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_5_scb9_uart_tx: p2_5_scb9_uart_tx {
+    pinmux = <((2 << (0)) | (5 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_1_scb2_uart_tx: p3_1_scb2_uart_tx {
+    pinmux = <((3 << (0)) | (1 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p4_1_scb7_uart_tx: p4_1_scb7_uart_tx {
+    pinmux = <((4 << (0)) | (1 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_1_scb5_uart_tx: p5_1_scb5_uart_tx {
+    pinmux = <((5 << (0)) | (1 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_5_scb10_uart_tx: p5_5_scb10_uart_tx {
+    pinmux = <((5 << (0)) | (5 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_1_scb3_uart_tx: p6_1_scb3_uart_tx {
+    pinmux = <((6 << (0)) | (1 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_5_scb6_uart_tx: p6_5_scb6_uart_tx {
+    pinmux = <((6 << (0)) | (5 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_1_scb4_uart_tx: p7_1_scb4_uart_tx {
+    pinmux = <((7 << (0)) | (1 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_1_scb4_uart_tx: p8_1_scb4_uart_tx {
+    pinmux = <((8 << (0)) | (1 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_5_scb11_uart_tx: p8_5_scb11_uart_tx {
+    pinmux = <((8 << (0)) | (5 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_1_scb2_uart_tx: p9_1_scb2_uart_tx {
+    pinmux = <((9 << (0)) | (1 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_1_scb1_uart_tx: p10_1_scb1_uart_tx {
+    pinmux = <((10 << (0)) | (1 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_1_scb5_uart_tx: p11_1_scb5_uart_tx {
+    pinmux = <((11 << (0)) | (1 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_1_scb6_uart_tx: p12_1_scb6_uart_tx {
+    pinmux = <((12 << (0)) | (1 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_1_scb6_uart_tx: p13_1_scb6_uart_tx {
+    pinmux = <((13 << (0)) | (1 << (8)) | ((18) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_5_scb12_uart_tx: p13_5_scb12_uart_tx {
+    pinmux = <((13 << (0)) | (5 << (8)) | ((18) << (16)))>;
+   };
+
+
+   /omit-if-no-ref/ p0_0_tcpwm0_line: p0_0_tcpwm0_line {
+    pinmux = <((0 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p0_0_tcpwm1_line: p0_0_tcpwm1_line {
+    pinmux = <((0 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p0_2_tcpwm0_line: p0_2_tcpwm0_line {
+    pinmux = <((0 << (0)) | (2 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p0_2_tcpwm1_line: p0_2_tcpwm1_line {
+    pinmux = <((0 << (0)) | (2 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p0_4_tcpwm0_line: p0_4_tcpwm0_line {
+    pinmux = <((0 << (0)) | (4 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p0_4_tcpwm1_line: p0_4_tcpwm1_line {
+    pinmux = <((0 << (0)) | (4 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_0_tcpwm0_line: p1_0_tcpwm0_line {
+    pinmux = <((1 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_0_tcpwm1_line: p1_0_tcpwm1_line {
+    pinmux = <((1 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_2_tcpwm0_line: p1_2_tcpwm0_line {
+    pinmux = <((1 << (0)) | (2 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_2_tcpwm1_line: p1_2_tcpwm1_line {
+    pinmux = <((1 << (0)) | (2 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_4_tcpwm0_line: p1_4_tcpwm0_line {
+    pinmux = <((1 << (0)) | (4 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_4_tcpwm1_line: p1_4_tcpwm1_line {
+    pinmux = <((1 << (0)) | (4 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_0_tcpwm0_line: p2_0_tcpwm0_line {
+    pinmux = <((2 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_0_tcpwm1_line: p2_0_tcpwm1_line {
+    pinmux = <((2 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_2_tcpwm0_line: p2_2_tcpwm0_line {
+    pinmux = <((2 << (0)) | (2 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_2_tcpwm1_line: p2_2_tcpwm1_line {
+    pinmux = <((2 << (0)) | (2 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_4_tcpwm0_line: p2_4_tcpwm0_line {
+    pinmux = <((2 << (0)) | (4 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_4_tcpwm1_line: p2_4_tcpwm1_line {
+    pinmux = <((2 << (0)) | (4 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_6_tcpwm0_line: p2_6_tcpwm0_line {
+    pinmux = <((2 << (0)) | (6 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_6_tcpwm1_line: p2_6_tcpwm1_line {
+    pinmux = <((2 << (0)) | (6 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_0_tcpwm0_line: p3_0_tcpwm0_line {
+    pinmux = <((3 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_0_tcpwm1_line: p3_0_tcpwm1_line {
+    pinmux = <((3 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_2_tcpwm0_line: p3_2_tcpwm0_line {
+    pinmux = <((3 << (0)) | (2 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_2_tcpwm1_line: p3_2_tcpwm1_line {
+    pinmux = <((3 << (0)) | (2 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_4_tcpwm0_line: p3_4_tcpwm0_line {
+    pinmux = <((3 << (0)) | (4 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_4_tcpwm1_line: p3_4_tcpwm1_line {
+    pinmux = <((3 << (0)) | (4 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p4_0_tcpwm0_line: p4_0_tcpwm0_line {
+    pinmux = <((4 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p4_0_tcpwm1_line: p4_0_tcpwm1_line {
+    pinmux = <((4 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_0_tcpwm0_line: p5_0_tcpwm0_line {
+    pinmux = <((5 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_0_tcpwm1_line: p5_0_tcpwm1_line {
+    pinmux = <((5 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_2_tcpwm0_line: p5_2_tcpwm0_line {
+    pinmux = <((5 << (0)) | (2 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_2_tcpwm1_line: p5_2_tcpwm1_line {
+    pinmux = <((5 << (0)) | (2 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_4_tcpwm0_line: p5_4_tcpwm0_line {
+    pinmux = <((5 << (0)) | (4 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_4_tcpwm1_line: p5_4_tcpwm1_line {
+    pinmux = <((5 << (0)) | (4 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_6_tcpwm0_line: p5_6_tcpwm0_line {
+    pinmux = <((5 << (0)) | (6 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_6_tcpwm1_line: p5_6_tcpwm1_line {
+    pinmux = <((5 << (0)) | (6 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_0_tcpwm0_line: p6_0_tcpwm0_line {
+    pinmux = <((6 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_0_tcpwm1_line: p6_0_tcpwm1_line {
+    pinmux = <((6 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_2_tcpwm0_line: p6_2_tcpwm0_line {
+    pinmux = <((6 << (0)) | (2 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_2_tcpwm1_line: p6_2_tcpwm1_line {
+    pinmux = <((6 << (0)) | (2 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_4_tcpwm0_line: p6_4_tcpwm0_line {
+    pinmux = <((6 << (0)) | (4 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_4_tcpwm1_line: p6_4_tcpwm1_line {
+    pinmux = <((6 << (0)) | (4 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_6_tcpwm0_line: p6_6_tcpwm0_line {
+    pinmux = <((6 << (0)) | (6 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_6_tcpwm1_line: p6_6_tcpwm1_line {
+    pinmux = <((6 << (0)) | (6 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_0_tcpwm0_line: p7_0_tcpwm0_line {
+    pinmux = <((7 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_0_tcpwm1_line: p7_0_tcpwm1_line {
+    pinmux = <((7 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_2_tcpwm0_line: p7_2_tcpwm0_line {
+    pinmux = <((7 << (0)) | (2 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_2_tcpwm1_line: p7_2_tcpwm1_line {
+    pinmux = <((7 << (0)) | (2 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_4_tcpwm0_line: p7_4_tcpwm0_line {
+    pinmux = <((7 << (0)) | (4 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_4_tcpwm1_line: p7_4_tcpwm1_line {
+    pinmux = <((7 << (0)) | (4 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_6_tcpwm0_line: p7_6_tcpwm0_line {
+    pinmux = <((7 << (0)) | (6 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_6_tcpwm1_line: p7_6_tcpwm1_line {
+    pinmux = <((7 << (0)) | (6 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_0_tcpwm0_line: p8_0_tcpwm0_line {
+    pinmux = <((8 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_0_tcpwm1_line: p8_0_tcpwm1_line {
+    pinmux = <((8 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_2_tcpwm0_line: p8_2_tcpwm0_line {
+    pinmux = <((8 << (0)) | (2 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_2_tcpwm1_line: p8_2_tcpwm1_line {
+    pinmux = <((8 << (0)) | (2 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_4_tcpwm0_line: p8_4_tcpwm0_line {
+    pinmux = <((8 << (0)) | (4 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_4_tcpwm1_line: p8_4_tcpwm1_line {
+    pinmux = <((8 << (0)) | (4 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_6_tcpwm0_line: p8_6_tcpwm0_line {
+    pinmux = <((8 << (0)) | (6 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_6_tcpwm1_line: p8_6_tcpwm1_line {
+    pinmux = <((8 << (0)) | (6 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_0_tcpwm0_line: p9_0_tcpwm0_line {
+    pinmux = <((9 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_0_tcpwm1_line: p9_0_tcpwm1_line {
+    pinmux = <((9 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_2_tcpwm0_line: p9_2_tcpwm0_line {
+    pinmux = <((9 << (0)) | (2 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_2_tcpwm1_line: p9_2_tcpwm1_line {
+    pinmux = <((9 << (0)) | (2 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_4_tcpwm0_line: p9_4_tcpwm0_line {
+    pinmux = <((9 << (0)) | (4 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_4_tcpwm1_line: p9_4_tcpwm1_line {
+    pinmux = <((9 << (0)) | (4 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_6_tcpwm0_line: p9_6_tcpwm0_line {
+    pinmux = <((9 << (0)) | (6 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_6_tcpwm1_line: p9_6_tcpwm1_line {
+    pinmux = <((9 << (0)) | (6 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_0_tcpwm0_line: p10_0_tcpwm0_line {
+    pinmux = <((10 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_0_tcpwm1_line: p10_0_tcpwm1_line {
+    pinmux = <((10 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_2_tcpwm0_line: p10_2_tcpwm0_line {
+    pinmux = <((10 << (0)) | (2 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_2_tcpwm1_line: p10_2_tcpwm1_line {
+    pinmux = <((10 << (0)) | (2 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_4_tcpwm0_line: p10_4_tcpwm0_line {
+    pinmux = <((10 << (0)) | (4 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_4_tcpwm1_line: p10_4_tcpwm1_line {
+    pinmux = <((10 << (0)) | (4 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_6_tcpwm0_line: p10_6_tcpwm0_line {
+    pinmux = <((10 << (0)) | (6 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_6_tcpwm1_line: p10_6_tcpwm1_line {
+    pinmux = <((10 << (0)) | (6 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_0_tcpwm0_line: p11_0_tcpwm0_line {
+    pinmux = <((11 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_0_tcpwm1_line: p11_0_tcpwm1_line {
+    pinmux = <((11 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_2_tcpwm0_line: p11_2_tcpwm0_line {
+    pinmux = <((11 << (0)) | (2 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_2_tcpwm1_line: p11_2_tcpwm1_line {
+    pinmux = <((11 << (0)) | (2 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_4_tcpwm0_line: p11_4_tcpwm0_line {
+    pinmux = <((11 << (0)) | (4 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_4_tcpwm1_line: p11_4_tcpwm1_line {
+    pinmux = <((11 << (0)) | (4 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_0_tcpwm0_line: p12_0_tcpwm0_line {
+    pinmux = <((12 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_0_tcpwm1_line: p12_0_tcpwm1_line {
+    pinmux = <((12 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_2_tcpwm0_line: p12_2_tcpwm0_line {
+    pinmux = <((12 << (0)) | (2 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_2_tcpwm1_line: p12_2_tcpwm1_line {
+    pinmux = <((12 << (0)) | (2 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_4_tcpwm0_line: p12_4_tcpwm0_line {
+    pinmux = <((12 << (0)) | (4 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_4_tcpwm1_line: p12_4_tcpwm1_line {
+    pinmux = <((12 << (0)) | (4 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_6_tcpwm0_line: p12_6_tcpwm0_line {
+    pinmux = <((12 << (0)) | (6 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_6_tcpwm1_line: p12_6_tcpwm1_line {
+    pinmux = <((12 << (0)) | (6 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_0_tcpwm0_line: p13_0_tcpwm0_line {
+    pinmux = <((13 << (0)) | (0 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_0_tcpwm1_line: p13_0_tcpwm1_line {
+    pinmux = <((13 << (0)) | (0 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_2_tcpwm0_line: p13_2_tcpwm0_line {
+    pinmux = <((13 << (0)) | (2 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_2_tcpwm1_line: p13_2_tcpwm1_line {
+    pinmux = <((13 << (0)) | (2 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_4_tcpwm0_line: p13_4_tcpwm0_line {
+    pinmux = <((13 << (0)) | (4 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_4_tcpwm1_line: p13_4_tcpwm1_line {
+    pinmux = <((13 << (0)) | (4 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_6_tcpwm0_line: p13_6_tcpwm0_line {
+    pinmux = <((13 << (0)) | (6 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_6_tcpwm1_line: p13_6_tcpwm1_line {
+    pinmux = <((13 << (0)) | (6 << (8)) | ((9) << (16)))>;
+   };
+
+
+   /omit-if-no-ref/ p0_1_tcpwm0_line_compl: p0_1_tcpwm0_line_compl {
+    pinmux = <((0 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p0_1_tcpwm1_line_compl: p0_1_tcpwm1_line_compl {
+    pinmux = <((0 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p0_3_tcpwm0_line_compl: p0_3_tcpwm0_line_compl {
+    pinmux = <((0 << (0)) | (3 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p0_3_tcpwm1_line_compl: p0_3_tcpwm1_line_compl {
+    pinmux = <((0 << (0)) | (3 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p0_5_tcpwm0_line_compl: p0_5_tcpwm0_line_compl {
+    pinmux = <((0 << (0)) | (5 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p0_5_tcpwm1_line_compl: p0_5_tcpwm1_line_compl {
+    pinmux = <((0 << (0)) | (5 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_1_tcpwm0_line_compl: p1_1_tcpwm0_line_compl {
+    pinmux = <((1 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_1_tcpwm1_line_compl: p1_1_tcpwm1_line_compl {
+    pinmux = <((1 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_3_tcpwm0_line_compl: p1_3_tcpwm0_line_compl {
+    pinmux = <((1 << (0)) | (3 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_3_tcpwm1_line_compl: p1_3_tcpwm1_line_compl {
+    pinmux = <((1 << (0)) | (3 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_5_tcpwm0_line_compl: p1_5_tcpwm0_line_compl {
+    pinmux = <((1 << (0)) | (5 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p1_5_tcpwm1_line_compl: p1_5_tcpwm1_line_compl {
+    pinmux = <((1 << (0)) | (5 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_1_tcpwm0_line_compl: p2_1_tcpwm0_line_compl {
+    pinmux = <((2 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_1_tcpwm1_line_compl: p2_1_tcpwm1_line_compl {
+    pinmux = <((2 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_3_tcpwm0_line_compl: p2_3_tcpwm0_line_compl {
+    pinmux = <((2 << (0)) | (3 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_3_tcpwm1_line_compl: p2_3_tcpwm1_line_compl {
+    pinmux = <((2 << (0)) | (3 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_5_tcpwm0_line_compl: p2_5_tcpwm0_line_compl {
+    pinmux = <((2 << (0)) | (5 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_5_tcpwm1_line_compl: p2_5_tcpwm1_line_compl {
+    pinmux = <((2 << (0)) | (5 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_7_tcpwm0_line_compl: p2_7_tcpwm0_line_compl {
+    pinmux = <((2 << (0)) | (7 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p2_7_tcpwm1_line_compl: p2_7_tcpwm1_line_compl {
+    pinmux = <((2 << (0)) | (7 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_1_tcpwm0_line_compl: p3_1_tcpwm0_line_compl {
+    pinmux = <((3 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_1_tcpwm1_line_compl: p3_1_tcpwm1_line_compl {
+    pinmux = <((3 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_3_tcpwm0_line_compl: p3_3_tcpwm0_line_compl {
+    pinmux = <((3 << (0)) | (3 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_3_tcpwm1_line_compl: p3_3_tcpwm1_line_compl {
+    pinmux = <((3 << (0)) | (3 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_5_tcpwm0_line_compl: p3_5_tcpwm0_line_compl {
+    pinmux = <((3 << (0)) | (5 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p3_5_tcpwm1_line_compl: p3_5_tcpwm1_line_compl {
+    pinmux = <((3 << (0)) | (5 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p4_1_tcpwm0_line_compl: p4_1_tcpwm0_line_compl {
+    pinmux = <((4 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p4_1_tcpwm1_line_compl: p4_1_tcpwm1_line_compl {
+    pinmux = <((4 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_1_tcpwm0_line_compl: p5_1_tcpwm0_line_compl {
+    pinmux = <((5 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_1_tcpwm1_line_compl: p5_1_tcpwm1_line_compl {
+    pinmux = <((5 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_3_tcpwm0_line_compl: p5_3_tcpwm0_line_compl {
+    pinmux = <((5 << (0)) | (3 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_3_tcpwm1_line_compl: p5_3_tcpwm1_line_compl {
+    pinmux = <((5 << (0)) | (3 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_5_tcpwm0_line_compl: p5_5_tcpwm0_line_compl {
+    pinmux = <((5 << (0)) | (5 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_5_tcpwm1_line_compl: p5_5_tcpwm1_line_compl {
+    pinmux = <((5 << (0)) | (5 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_7_tcpwm0_line_compl: p5_7_tcpwm0_line_compl {
+    pinmux = <((5 << (0)) | (7 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p5_7_tcpwm1_line_compl: p5_7_tcpwm1_line_compl {
+    pinmux = <((5 << (0)) | (7 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_1_tcpwm0_line_compl: p6_1_tcpwm0_line_compl {
+    pinmux = <((6 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_1_tcpwm1_line_compl: p6_1_tcpwm1_line_compl {
+    pinmux = <((6 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_3_tcpwm0_line_compl: p6_3_tcpwm0_line_compl {
+    pinmux = <((6 << (0)) | (3 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_3_tcpwm1_line_compl: p6_3_tcpwm1_line_compl {
+    pinmux = <((6 << (0)) | (3 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_5_tcpwm0_line_compl: p6_5_tcpwm0_line_compl {
+    pinmux = <((6 << (0)) | (5 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_5_tcpwm1_line_compl: p6_5_tcpwm1_line_compl {
+    pinmux = <((6 << (0)) | (5 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_7_tcpwm0_line_compl: p6_7_tcpwm0_line_compl {
+    pinmux = <((6 << (0)) | (7 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p6_7_tcpwm1_line_compl: p6_7_tcpwm1_line_compl {
+    pinmux = <((6 << (0)) | (7 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_1_tcpwm0_line_compl: p7_1_tcpwm0_line_compl {
+    pinmux = <((7 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_1_tcpwm1_line_compl: p7_1_tcpwm1_line_compl {
+    pinmux = <((7 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_3_tcpwm0_line_compl: p7_3_tcpwm0_line_compl {
+    pinmux = <((7 << (0)) | (3 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_3_tcpwm1_line_compl: p7_3_tcpwm1_line_compl {
+    pinmux = <((7 << (0)) | (3 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_5_tcpwm0_line_compl: p7_5_tcpwm0_line_compl {
+    pinmux = <((7 << (0)) | (5 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_5_tcpwm1_line_compl: p7_5_tcpwm1_line_compl {
+    pinmux = <((7 << (0)) | (5 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_7_tcpwm0_line_compl: p7_7_tcpwm0_line_compl {
+    pinmux = <((7 << (0)) | (7 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p7_7_tcpwm1_line_compl: p7_7_tcpwm1_line_compl {
+    pinmux = <((7 << (0)) | (7 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_1_tcpwm0_line_compl: p8_1_tcpwm0_line_compl {
+    pinmux = <((8 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_1_tcpwm1_line_compl: p8_1_tcpwm1_line_compl {
+    pinmux = <((8 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_3_tcpwm0_line_compl: p8_3_tcpwm0_line_compl {
+    pinmux = <((8 << (0)) | (3 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_3_tcpwm1_line_compl: p8_3_tcpwm1_line_compl {
+    pinmux = <((8 << (0)) | (3 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_5_tcpwm0_line_compl: p8_5_tcpwm0_line_compl {
+    pinmux = <((8 << (0)) | (5 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_5_tcpwm1_line_compl: p8_5_tcpwm1_line_compl {
+    pinmux = <((8 << (0)) | (5 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_7_tcpwm0_line_compl: p8_7_tcpwm0_line_compl {
+    pinmux = <((8 << (0)) | (7 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p8_7_tcpwm1_line_compl: p8_7_tcpwm1_line_compl {
+    pinmux = <((8 << (0)) | (7 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_1_tcpwm0_line_compl: p9_1_tcpwm0_line_compl {
+    pinmux = <((9 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_1_tcpwm1_line_compl: p9_1_tcpwm1_line_compl {
+    pinmux = <((9 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_3_tcpwm0_line_compl: p9_3_tcpwm0_line_compl {
+    pinmux = <((9 << (0)) | (3 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_3_tcpwm1_line_compl: p9_3_tcpwm1_line_compl {
+    pinmux = <((9 << (0)) | (3 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_5_tcpwm0_line_compl: p9_5_tcpwm0_line_compl {
+    pinmux = <((9 << (0)) | (5 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_5_tcpwm1_line_compl: p9_5_tcpwm1_line_compl {
+    pinmux = <((9 << (0)) | (5 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_7_tcpwm0_line_compl: p9_7_tcpwm0_line_compl {
+    pinmux = <((9 << (0)) | (7 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p9_7_tcpwm1_line_compl: p9_7_tcpwm1_line_compl {
+    pinmux = <((9 << (0)) | (7 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_1_tcpwm0_line_compl: p10_1_tcpwm0_line_compl {
+    pinmux = <((10 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_1_tcpwm1_line_compl: p10_1_tcpwm1_line_compl {
+    pinmux = <((10 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_3_tcpwm0_line_compl: p10_3_tcpwm0_line_compl {
+    pinmux = <((10 << (0)) | (3 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_3_tcpwm1_line_compl: p10_3_tcpwm1_line_compl {
+    pinmux = <((10 << (0)) | (3 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_5_tcpwm0_line_compl: p10_5_tcpwm0_line_compl {
+    pinmux = <((10 << (0)) | (5 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_5_tcpwm1_line_compl: p10_5_tcpwm1_line_compl {
+    pinmux = <((10 << (0)) | (5 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_7_tcpwm0_line_compl: p10_7_tcpwm0_line_compl {
+    pinmux = <((10 << (0)) | (7 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p10_7_tcpwm1_line_compl: p10_7_tcpwm1_line_compl {
+    pinmux = <((10 << (0)) | (7 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_1_tcpwm0_line_compl: p11_1_tcpwm0_line_compl {
+    pinmux = <((11 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_1_tcpwm1_line_compl: p11_1_tcpwm1_line_compl {
+    pinmux = <((11 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_3_tcpwm0_line_compl: p11_3_tcpwm0_line_compl {
+    pinmux = <((11 << (0)) | (3 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_3_tcpwm1_line_compl: p11_3_tcpwm1_line_compl {
+    pinmux = <((11 << (0)) | (3 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_5_tcpwm0_line_compl: p11_5_tcpwm0_line_compl {
+    pinmux = <((11 << (0)) | (5 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p11_5_tcpwm1_line_compl: p11_5_tcpwm1_line_compl {
+    pinmux = <((11 << (0)) | (5 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_1_tcpwm0_line_compl: p12_1_tcpwm0_line_compl {
+    pinmux = <((12 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_1_tcpwm1_line_compl: p12_1_tcpwm1_line_compl {
+    pinmux = <((12 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_3_tcpwm0_line_compl: p12_3_tcpwm0_line_compl {
+    pinmux = <((12 << (0)) | (3 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_3_tcpwm1_line_compl: p12_3_tcpwm1_line_compl {
+    pinmux = <((12 << (0)) | (3 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_5_tcpwm0_line_compl: p12_5_tcpwm0_line_compl {
+    pinmux = <((12 << (0)) | (5 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_5_tcpwm1_line_compl: p12_5_tcpwm1_line_compl {
+    pinmux = <((12 << (0)) | (5 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_7_tcpwm0_line_compl: p12_7_tcpwm0_line_compl {
+    pinmux = <((12 << (0)) | (7 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p12_7_tcpwm1_line_compl: p12_7_tcpwm1_line_compl {
+    pinmux = <((12 << (0)) | (7 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_1_tcpwm0_line_compl: p13_1_tcpwm0_line_compl {
+    pinmux = <((13 << (0)) | (1 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_1_tcpwm1_line_compl: p13_1_tcpwm1_line_compl {
+    pinmux = <((13 << (0)) | (1 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_3_tcpwm0_line_compl: p13_3_tcpwm0_line_compl {
+    pinmux = <((13 << (0)) | (3 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_3_tcpwm1_line_compl: p13_3_tcpwm1_line_compl {
+    pinmux = <((13 << (0)) | (3 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_5_tcpwm0_line_compl: p13_5_tcpwm0_line_compl {
+    pinmux = <((13 << (0)) | (5 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_5_tcpwm1_line_compl: p13_5_tcpwm1_line_compl {
+    pinmux = <((13 << (0)) | (5 << (8)) | ((9) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_7_tcpwm0_line_compl: p13_7_tcpwm0_line_compl {
+    pinmux = <((13 << (0)) | (7 << (8)) | ((8) << (16)))>;
+   };
+   /omit-if-no-ref/ p13_7_tcpwm1_line_compl: p13_7_tcpwm1_line_compl {
+    pinmux = <((13 << (0)) | (7 << (8)) | ((9) << (16)))>;
+   };
+
+  };
+ };
+};
+# 10 "C:/Users/elija/zephyrproject/zephyr/dts/arm/infineon/psoc6/mpns/CY8C624ABZI_S2D44.dtsi" 2 3 4
+
+&nvic {
+ arm,num-irq-priority-bits = <3>;
+};
+# 8 "C:/Users/elija/zephyrproject/zephyr/boards/arm/cy8cproto_062_4343w/cy8cproto_062_4343w.dts" 2
+# 1 "C:/Users/elija/zephyrproject/zephyr/dts/arm/infineon/psoc6/system_clocks.dtsi" 1 3 4
+# 9 "C:/Users/elija/zephyrproject/zephyr/dts/arm/infineon/psoc6/system_clocks.dtsi" 3 4
+/ {
+ clocks {
+
+
+  clk_imo: clk_imo {
+   #clock-cells = <0>;
+   compatible = "fixed-clock";
+   clock-frequency = <8000000>;
+   status = "okay";
+  };
+
+
+  path_mux0: path_mux0 {
+   #clock-cells = <0>;
+   compatible = "fixed-factor-clock";
+   clocks = <&clk_imo>;
+   status = "okay";
+  };
+
+
+  path_mux1: path_mux1 {
+   #clock-cells = <0>;
+   compatible = "fixed-factor-clock";
+   clocks = <&clk_imo>;
+   status = "okay";
+  };
+
+
+  path_mux2: path_mux2 {
+   #clock-cells = <0>;
+   compatible = "fixed-factor-clock";
+   clocks = <&clk_imo>;
+   status = "disabled";
+  };
+
+
+  path_mux3: path_mux3 {
+   #clock-cells = <0>;
+   compatible = "fixed-factor-clock";
+   clocks = <&clk_imo>;
+   status = "disabled";
+  };
+
+
+  path_mux4: path_mux4 {
+   #clock-cells = <0>;
+   compatible = "fixed-factor-clock";
+   clocks = <&clk_imo>;
+   status = "disabled";
+  };
+
+
+  fll0: fll0 {
+   #clock-cells = <0>;
+   compatible = "fixed-clock";
+
+   status = "okay";
+  };
+
+
+  pll0: pll0 {
+   #clock-cells = <0>;
+   compatible = "fixed-clock";
+
+   status = "disabled";
+  };
+
+
+  clk_hf0: clk_hf0 {
+   #clock-cells = <0>;
+   compatible = "fixed-factor-clock";
+   clock-div = <1>;
+   clocks = <&fll0>;
+   status = "okay";
+  };
+
+
+  clk_hf1: clk_hf1 {
+   #clock-cells = <0>;
+   compatible = "fixed-factor-clock";
+   clock-div = <1>;
+   clocks = <&path_mux1>;
+   status = "disabled";
+  };
+
+
+  clk_hf2: clk_hf2 {
+   #clock-cells = <0>;
+   compatible = "fixed-factor-clock";
+   clock-div = <1>;
+   clocks = <&path_mux2>;
+   status = "disabled";
+  };
+
+
+  clk_hf3: clk_hf3 {
+   #clock-cells = <0>;
+   compatible = "fixed-factor-clock";
+   clock-div = <1>;
+   clocks = <&path_mux3>;
+   status = "disabled";
+  };
+
+
+  clk_hf4: clk_hf4 {
+   #clock-cells = <0>;
+   compatible = "fixed-factor-clock";
+   clock-div = <1>;
+   clocks = <&path_mux4>;
+   status = "disabled";
+  };
+
+
+  clk_fast: clk_fast {
+   #clock-cells = <0>;
+   compatible = "fixed-factor-clock";
+   clock-div = <1>;
+   status = "okay";
+  };
+
+
+  clk_slow: clk_slow {
+   #clock-cells = <0>;
+   compatible = "fixed-factor-clock";
+   clock-div = <1>;
+   status = "okay";
+  };
+
+
+  clk_peri: clk_peri {
+   #clock-cells = <0>;
+   compatible = "fixed-factor-clock";
+   clock-div = <1>;
+   status = "okay";
+  };
+ };
+
+};
+# 9 "C:/Users/elija/zephyrproject/zephyr/boards/arm/cy8cproto_062_4343w/cy8cproto_062_4343w.dts" 2
+# 1 "C:/Users/elija/zephyrproject/zephyr/boards/arm/cy8cproto_062_4343w/cy8cproto_062_4343w-common.dtsi" 1
+
+
+
+
+
+# 1 "C:/Users/elija/zephyrproject/zephyr/include/zephyr/dt-bindings/input/input-event-codes.h" 1 3 4
+# 7 "C:/Users/elija/zephyrproject/zephyr/boards/arm/cy8cproto_062_4343w/cy8cproto_062_4343w-common.dtsi" 2
+
+/ {
+ aliases {
+  led0 = &user_led;
+  sw0 = &user_bt;
+ };
+
+ leds {
+  compatible = "gpio-leds";
+  user_led: led_0 {
+   label = "LED_0";
+   gpios = <&gpio_prt13 7 (0 << 0)>;
+  };
+ };
+
+ gpio_keys {
+  compatible = "gpio-keys";
+
+  user_bt: button_0 {
+   label = "SW_0";
+   gpios = <&gpio_prt0 4 ((1 << 4) | (1 << 0))>;
+   zephyr,code = <11>;
+  };
+ };
+};
+
+&gpio_prt0 {
+ status = "okay";
+};
+
+&gpio_prt3 {
+ status = "okay";
+};
+
+&gpio_prt5 {
+ status = "okay";
+};
+
+&gpio_prt6 {
+ status = "okay";
+};
+
+&gpio_prt9 {
+ status = "okay";
+};
+
+&gpio_prt12 {
+ status = "okay";
+};
+
+&gpio_prt13 {
+ status = "okay";
+};
+# 10 "C:/Users/elija/zephyrproject/zephyr/boards/arm/cy8cproto_062_4343w/cy8cproto_062_4343w.dts" 2
+# 1 "C:/Users/elija/zephyrproject/zephyr/boards/arm/cy8cproto_062_4343w/cy8cproto_062_4343w-pinctrl.dtsi" 1
+
+
+
+
+
+
+&p3_1_scb2_uart_tx {
+ drive-push-pull;
+};
+
+&p3_0_scb2_uart_rx {
+ input-enable;
+};
+
+&p3_2_scb2_uart_rts {
+ drive-push-pull;
+};
+
+&p3_3_scb2_uart_cts {
+ input-enable;
+};
+
+
+&p5_1_scb5_uart_tx {
+ drive-push-pull;
+};
+
+&p5_0_scb5_uart_rx {
+ input-enable;
+};
+# 11 "C:/Users/elija/zephyrproject/zephyr/boards/arm/cy8cproto_062_4343w/cy8cproto_062_4343w.dts" 2
+
+/ {
+ model = "cy8cproto_062_4343w with an Cypress PSoC™ 6 SoC";
+ compatible = "cy8cproto_062_4343w", "PSoC6";
+
+ aliases {
+  uart-5 = &uart5;
+  i2c-0 = &i2c3;
+  watchdog0 = &watchdog0;
+ };
+
+ chosen {
+  zephyr,sram = &sram0;
+  zephyr,flash = &flash0;
+  zephyr,console = &uart5;
+  zephyr,shell-uart = &uart5;
+  zephyr,bt_uart = &uart2;
+ };
+};
+
+&counter0_0 {
+ status = "okay";
+};
+
+uart5: &scb5 {
+ compatible = "infineon,cat1-uart";
+ status = "okay";
+ current-speed = <115200>;
+
+ pinctrl-0 = <&p5_1_scb5_uart_tx &p5_0_scb5_uart_rx>;
+ pinctrl-names = "default";
+};
+
+uart2: &scb2 {
+ compatible = "infineon,cat1-uart";
+ status = "okay";
+
+
+
+
+ current-speed = <115200>;
+
+
+ pinctrl-0 = <&p3_1_scb2_uart_tx &p3_0_scb2_uart_rx &p3_2_scb2_uart_rts &p3_3_scb2_uart_cts>;
+ pinctrl-names = "default";
+
+ bt-hci {
+  status = "okay";
+  compatible = "infineon,cyw43xxx-bt-hci";
+  bt-reg-on-gpios = <&gpio_prt3 4 ((0 << 0))>;
+
+
+
+
+
+
+  fw-download-speed = <3000000>;
+ };
+};
+
+
+&fll0 {
+ status = "okay";
+ clock-frequency = <100000000>;
+};
+
+&clk_hf0 {
+ clock-div = <1>;
+ clocks = <&fll0>;
+};
+
+
+
+
+&clk_fast {
+ clock-div = <1>;
+};
+
+
+
+
+&clk_slow {
+ clock-div = <2>;
+};
+
+
+
+
+&clk_peri {
+ clock-div = <1>;
+};
+
+i2c3: &scb3 {
+ compatible = "infineon,cat1-i2c";
+
+
+ pinctrl-0 = <&p6_0_scb3_i2c_scl &p6_1_scb3_i2c_sda>;
+ pinctrl-names = "default";
+};
+
+&watchdog0 {
+ status = "okay";
+};
+# 0 "<command-line>" 2
+# 1 "C:/Users/elija/zephyrproject/zephyr/misc/empty_file.c"
