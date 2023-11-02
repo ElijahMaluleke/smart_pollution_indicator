@@ -1,6 +1,6 @@
 .. _button-sample:
 
-Button
+A Smart Air Pollution and Noise Level indicator IoT Project
 ######
 
 Overview
