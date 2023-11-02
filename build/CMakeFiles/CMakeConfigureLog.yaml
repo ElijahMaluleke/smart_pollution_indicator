@@ -130,35 +130,4 @@ events:
       This is free software; see the source for copying conditions.  There is NO
       warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
       
-  -
-    kind: "try_compile-v1"
-    backtrace:
-      - "C:/Program Files/CMake/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/Program Files/CMake/share/cmake-3.27/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
-      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
-      - "C:/Users/elija/zephyrproject/zephyr/cmake/modules/extensions.cmake:1994 (check_c_compiler_flag)"
-      - "C:/Users/elija/zephyrproject/zephyr/cmake/modules/extensions.cmake:1095 (check_compiler_flag)"
-      - "C:/Users/elija/zephyrproject/zephyr/cmake/modules/extensions.cmake:2033 (zephyr_check_compiler_flag)"
-      - "C:/Users/elija/zephyrproject/zephyr/cmake/modules/extensions.cmake:2009 (target_cc_option_fallback)"
-      - "C:/Users/elija/zephyrproject/zephyr/cmake/modules/extensions.cmake:122 (target_cc_option)"
-      - "C:/Users/elija/zephyrproject/zephyr/CMakeLists.txt:465 (zephyr_cc_option)"
-    directories:
-      source: "C:/Users/elija/zephyrproject/zephyr/samples/basic/smart_pollution_indicator/build/CMakeFiles/CMakeScratch/TryCompile-n8i00u"
-      binary: "C:/Users/elija/zephyrproject/zephyr/samples/basic/smart_pollution_indicator/build/CMakeFiles/CMakeScratch/TryCompile-n8i00u"
-    cmakeVariables:
-      CMAKE_C_FLAGS: ""
-      CMAKE_C_FLAGS_DEBUG: "-g"
-      CMAKE_EXE_LINKER_FLAGS: ""
-      CMAKE_MODULE_PATH: "C:/Users/elija/zephyrproject/zephyr/cmake/modules"
-    buildResult:
-      variable: "check_fmacro_prefix_map_C__Users_elija_zephyrproject_zephyr_samples_basic_smart_pollution_indicator_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem__c__users_elija_zephyr_sdk_0_16_1_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include___isystem__c__users_elija_zephyr_sdk_0_16_1_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0"
-      cached: true
-      stdout: |
-        Change Dir: 'C:/Users/elija/zephyrproject/zephyr/samples/basic/smart_pollution_indicator/build/CMakeFiles/CMakeScratch/TryCompile-n8i00u'
-        
-        Run Build Command(s): C:/ProgramData/chocolatey/bin/ninja.exe -v cmTC_47480
-        [1/2] C:\\Users\\elija\\zephyr-sdk-0.16.1\\arm-zephyr-eabi\\bin\\arm-zephyr-eabi-gcc.exe -Dcheck_fmacro_prefix_map_C__Users_elija_zephyrproject_zephyr_samples_basic_smart_pollution_indicator_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem__c__users_elija_zephyr_sdk_0_16_1_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include___isystem__c__users_elija_zephyr_sdk_0_16_1_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0  -nostartfiles -nostdlib -isystem "c:/users/elija/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/include" -isystem "c:/users/elija/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0   -fmacro-prefix-map=C:/Users/elija/zephyrproject/zephyr/samples/basic/smart_pollution_indicator=CMAKE_SOURCE_DIR -o CMakeFiles/cmTC_47480.dir/src.c.obj -c C:/Users/elija/zephyrproject/zephyr/samples/basic/smart_pollution_indicator/build/CMakeFiles/CMakeScratch/TryCompile-n8i00u/src.c
-        [2/2] cmd.exe /C "cd . && C:\\Users\\elija\\zephyr-sdk-0.16.1\\arm-zephyr-eabi\\bin\\arm-zephyr-eabi-gcc.exe -nostartfiles -nostdlib -isystem "c:/users/elija/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/include" -isystem "c:/users/elija/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/include-fixed" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0  CMakeFiles/cmTC_47480.dir/src.c.obj -o cmTC_47480   && cd ."
-        
-      exitCode: 0
 ...

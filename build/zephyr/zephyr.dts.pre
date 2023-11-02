@@ -1811,6 +1811,18 @@
 &p5_0_scb5_uart_rx {
  input-enable;
 };
+
+
+
+
+
+&p6_0_scb3_i2c_scl {
+ drive-push-pull;
+};
+
+&p6_1_scb3_i2c_sda {
+ drive-push-pull;
+};
 # 11 "C:/Users/elija/zephyrproject/zephyr/boards/arm/cy8cproto_062_4343w/cy8cproto_062_4343w.dts" 2
 
 / {
@@ -1905,8 +1917,9 @@ uart2: &scb2 {
 };
 
 i2c3: &scb3 {
+ status = "okay";
  compatible = "infineon,cat1-i2c";
-
+ clock-frequency = < 0x61a80 >;
 
  pinctrl-0 = <&p6_0_scb3_i2c_scl &p6_1_scb3_i2c_sda>;
  pinctrl-names = "default";

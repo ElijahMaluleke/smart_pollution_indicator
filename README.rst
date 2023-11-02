@@ -1,13 +1,14 @@
 .. _button-sample:
 
-Button
+A Smart Air Pollution and Noise Level indicator IoT Project
 ######
 
 Overview
 ********
 
-A simple button demo showcasing the use of GPIO input with interrupts.
-The sample prints a message to the console each time a button is pressed.
+This IoT project will help reduce carbon dioxide emission into the atmosphere 
+in different parts of the world since carbon emission is the number one 
+contributor to air pollution. 
 
 Requirements
 ************
