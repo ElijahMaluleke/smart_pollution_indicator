@@ -116,6 +116,8 @@ int main(void)
 
 	printk("\nA Smart Air Pollution and Noise Level indicator IoT Project: %s\n\n\n", version);
 	
+	k_msleep(5000);
+
 	if (!gpio_is_ready_dt(&gpio0_dev)) {
 		printk("Error: button device %s is not ready\n", port0);
 		return 0;
