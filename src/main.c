@@ -20,16 +20,18 @@
 
 #define version				"v1.0.0"
 
+#define LED_ON					0
+#define LED_OFF					1
+
 #define BUZZER_ON			0
 #define BUZZER_OFF			1
 
 #define PORT0_PIN04 	 	4
 #define BUTTON		     	PORT0_PIN04
-#define PORT0_PIN05 	 	5
-#define LED1				PORT0_PIN05
 #define PORT13_PIN04	 	4
 #define BUZZER			 	PORT13_PIN04
-
+#define PORT13_PIN07 		7	 	
+#define LED4				PORT13_PIN07
 
 #define port0				"gpio_prt0"
 #define port13				"gpio_prt13"
@@ -93,9 +95,24 @@ void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t
 /********************************************************************************
  *
  ********************************************************************************/
-int main(void)
+void LED_BUZZER(void)
 {
 	int ret;
+
+	ret = gpio_pin_set(gpio13_dev, LED4, LED_ON);
+	ret = gpio_pin_set(gpio13_dev, BUZZER, BUZZER_ON);
+	k_msleep(1000);	
+	ret = gpio_pin_set(gpio13_dev, LED4, LED_OFF);
+	ret = gpio_pin_set(gpio13_dev, BUZZER, BUZZER_OFF);
+	k_msleep(1000);
+}
+
+/********************************************************************************
+ *
+ ********************************************************************************/
+int main(void)
+{
+	int ret, i;
 
 	printk("\nA Smart Air Pollution and Noise Level indicator IoT Project: %s\n\n\n", version);
 	
@@ -109,7 +126,7 @@ int main(void)
 		return 0;
 	}
 	
-	ret = gpio_pin_configure(gpio0_dev, LED1, GPIO_OUTPUT);
+	ret = gpio_pin_configure(gpio13_dev, LED4, GPIO_OUTPUT);
 	if (ret < 0) {
 		return 0;
 	}
@@ -137,13 +154,18 @@ int main(void)
 
 	printk("Press the button\n");
 	
-	while (1) {
-		ret = gpio_pin_set(gpio0_dev, LED1, true);
+	for(i = 0; i < 5; i++) {
+		ret = gpio_pin_set(gpio13_dev, LED4, LED_ON);
 		ret = gpio_pin_set(gpio13_dev, BUZZER, BUZZER_ON);
 		k_msleep(delay_led);	
-		ret = gpio_pin_set(gpio0_dev, LED1, false);
+		ret = gpio_pin_set(gpio13_dev, LED4, LED_OFF);
 		ret = gpio_pin_set(gpio13_dev, BUZZER, BUZZER_OFF);
 		k_msleep(delay_led);
+	}
+
+	while (1) {
+		k_msleep(30000);
+		LED_BUZZER();
 	}
 	return 0;
 }
